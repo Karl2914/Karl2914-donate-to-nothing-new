@@ -42,20 +42,20 @@ export default function App () {
 
   return (
     <div className='wrap'>
-      <div className='hero'>
-        <h1>WELCOME TO NOTHING</h1>
-        <p className='subtitle'>{phrase}</p>
-        <div className='description'>
-          <p>Welcome to Nothing.</p>
-          <p>It's simple: send us crypto and receive nothing in return.</p>
-          <p>What is this website about? Well, that's a secret. Or not.</p>
-          <p>We're just here for the fun, or maybe for the absurdity.</p>
-          <p>Enjoy wasting your time. We do it all the time.</p>
-        </div>
-        <button className='donate-btn' onClick={() => setShowWallets(!showWallets)}>
-          {showWallets ? 'Hide wallets' : 'Donate'}
-        </button>
+      <h1>WELCOME TO NOTHING</h1>
+      <p className='subtitle'>{phrase}</p>
+
+      <div className='description'>
+        <p>Welcome to Nothing.</p>
+        <p>It's simple: send us crypto and receive nothing in return.</p>
+        <p>What is this website about? Well, that's a secret. Or not.</p>
+        <p>We're just here for the fun, or maybe for the absurdity.</p>
+        <p>Enjoy wasting your time. We do it all the time.</p>
       </div>
+
+      <button className='donate-btn' onClick={() => setShowWallets(!showWallets)}>
+        {showWallets ? 'Hide wallets' : 'Donate'}
+      </button>
 
       {showWallets && (
         <div className='grid'>
