@@ -1,6 +1,20 @@
 import React, { useState, useEffect } from 'react'
 import QRCode from 'qrcode.react'
 
+// ---- Static "stats" (fake for now) ----
+const STATS = {
+  totalUSD: '$7,483.01',
+  largestUSD: '$5,000.00',
+  smallestUSD: '$0.01',
+  topDonator: 'existential.eth',
+}
+
+// ---- NFT badge (static link for now; replace later) ----
+const NFT = {
+  label: '🎖️ Claim your useless NFT badge',
+  href: 'https://zora.co/collections/donatetothing' // placeholder
+}
+
 const wallets = [
   { label: 'MetaMask (EVM: ETH, Polygon, BSC, Base, Arbitrum, Optimism)', address: '0x2998cAE698b9eA846e1E50510D269a838A1aD7DF', note: 'Minimum: $5' },
   { label: 'BTC', address: 'bc1qpggv4lugp4j4lump3k4k8rtmdqzc5p9qcyk8fn', note: 'Minimum: 0.0001 BTC' },
@@ -73,11 +87,18 @@ export default function App () {
         </div>
       )}
 
-      <div className='stats'>
-        <div>Total donated to nothing: <b>$7,483.01</b></div>
-        <div>Top donator: <b>existential.eth</b></div>
-        <div>Smallest donation: <b>$0.01</b></div>
+      {/* Static stats section (always visible) */}
+      <div className='stats-card'>
+        <div className='stats-row'><span>Total donated</span><b>{STATS.totalUSD}</b></div>
+        <div className='stats-row'><span>Largest donation</span><b>{STATS.largestUSD}</b></div>
+        <div className='stats-row'><span>Smallest donation</span><b>{STATS.smallestUSD}</b></div>
+        <div className='stats-row'><span>Top donator</span><b>{STATS.topDonator}</b></div>
       </div>
+
+      {/* NFT badge CTA */}
+      <a className='nft-btn' href={NFT.href} target='_blank' rel='noreferrer'>
+        {NFT.label}
+      </a>
 
       <footer>© {new Date().getFullYear()} DonateToNothing. All rights reversed.</footer>
     </div>
