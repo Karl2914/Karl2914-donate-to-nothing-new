@@ -32,36 +32,30 @@ export default function App () {
 
   useEffect(() => {
     setPhrase(phrases[Math.floor(Math.random() * phrases.length)])
-    const audio = new Audio('/meme-voice.wav')
-    audio.play().catch(() => {})
   }, [])
 
   const copy = async (text) => {
     await navigator.clipboard.writeText(text)
     setCopied(text)
-    const audio = new Audio('/copy.wav')
-    audio.play().catch(() => {})
     setTimeout(() => setCopied(null), 1500)
   }
 
   return (
     <div className='wrap'>
-      <h1>WELCOME TO NOTHING</h1>
-      <p className='subtitle'>{phrase}</p>
-
-      <img src='/meme.jpg' alt='Meme' className='meme-img' />
-
-      <div className='description'>
-        <p>Welcome to Nothing.</p>
-        <p>It's simple: send us crypto and receive nothing in return.</p>
-        <p>What is this website about? Well, that's a secret. Or not.</p>
-        <p>We're just here for the fun, or maybe for the absurdity.</p>
-        <p>Enjoy wasting your time. We do it all the time.</p>
+      <div className='hero'>
+        <h1>WELCOME TO NOTHING</h1>
+        <p className='subtitle'>{phrase}</p>
+        <div className='description'>
+          <p>Welcome to Nothing.</p>
+          <p>It's simple: send us crypto and receive nothing in return.</p>
+          <p>What is this website about? Well, that's a secret. Or not.</p>
+          <p>We're just here for the fun, or maybe for the absurdity.</p>
+          <p>Enjoy wasting your time. We do it all the time.</p>
+        </div>
+        <button className='donate-btn' onClick={() => setShowWallets(!showWallets)}>
+          {showWallets ? 'Hide wallets' : 'Donate'}
+        </button>
       </div>
-
-      <button className='donate-btn' onClick={() => setShowWallets(!showWallets)}>
-        {showWallets ? 'Hide wallets' : 'Donate'}
-      </button>
 
       {showWallets && (
         <div className='grid'>
@@ -84,10 +78,6 @@ export default function App () {
         <div>Top donator: <b>existential.eth</b></div>
         <div>Smallest donation: <b>$0.01</b></div>
       </div>
-
-      <a className='nft' href='https://zora.co/collections/donatetothing' target='_blank' rel='noreferrer'>
-        🎖️ Claim your NFT badge on Base
-      </a>
 
       <footer>© {new Date().getFullYear()} DonateToNothing. All rights reversed.</footer>
     </div>
